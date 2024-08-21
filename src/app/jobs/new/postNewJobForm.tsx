@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import Select from "@/components/ui/select";
-import { types, locationTypes } from "@/lib/job-types";
+import { types, locationTypes, statusTypes } from "@/lib/job-types";
 import TextEditor from "@/components/textEditor";
 import { draftToMarkdown } from "markdown-draft-js";
 import { Label } from "@/components/ui/label";
@@ -81,6 +81,28 @@ export default function PostNewJobForm() {
                   <FormLabel>Stillingstittel</FormLabel>
                   <FormControl>
                     <Input placeholder="" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={control}
+              name="status"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Status</FormLabel>
+                  <FormControl>
+                    <Select defaultValue={""} {...field}>
+                      <option value="" hidden>
+                        Select...
+                      </option>
+                      {statusTypes.map((statusType) => (
+                        <option key={statusType} value={statusType}>
+                          {statusType}
+                        </option>
+                      ))}
+                    </Select>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

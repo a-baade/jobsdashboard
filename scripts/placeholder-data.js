@@ -47,6 +47,7 @@ const placeholderJobs = [
     companyName: "Design Studio XYZ",
     locationType: "Remote",
     location: "Anywhere",
+    status: "Sendt",
     applicationEmail: "designs@designstudioxyz.com",
     applicationUrl: "https://www.designstudioxyz.com/freelance",
     slug: "ux-designer-freelance-design-studio-xyz",

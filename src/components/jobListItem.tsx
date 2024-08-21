@@ -6,6 +6,7 @@ import { formatCurrency, relativeDate } from "@/lib/utils";
 import Badge from "./ui/badge";
 import { DeleteJobButton } from "./DeleteJobButton";
 import Link from "next/link";
+import { statusTypes } from "@/lib/job-types";
 
 interface JobListItemProps {
   job: Job;
@@ -18,6 +19,7 @@ export default function JobListItem({
     title,
     companyName,
     type,
+    status,
     locationType,
     location,
     description,
@@ -77,7 +79,7 @@ export default function JobListItem({
           </div>
 
           <div className="mt-6 hidden shrink-0 flex-col items-start justify-between sm:flex">
-            <Badge>{"Sendt/ Avist"}</Badge>
+            <Badge job={job}>{status}</Badge>
             <span className="flex items-center gap-1.5 text-muted-foreground group-hover:text-muted/80">
               <Clock size={16} />
               {relativeDate(createdAt)}

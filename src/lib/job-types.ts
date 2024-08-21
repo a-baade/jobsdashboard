@@ -8,3 +8,5 @@ export const types = [
 ];
 
 export const locationTypes = ["On-site", "Remote", "Hybrid"];
+
+export const statusTypes = ["Sendt", "Avist"];

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { locationTypes, types } from "./job-types";
+import { locationTypes, types, statusTypes } from "./job-types";
 
 const requiredString = z.string().min(1, "Required");
 const numRequiredString = requiredString.regex(/^\d+$/, "Must be a number");
@@ -43,6 +43,7 @@ const locationSchema = z
 export const createJobsSchema = z
   .object({
     title: requiredString.max(100),
+    status: requiredString.max(100),
     type: requiredString.refine(
       (value) => types.includes(value),
       "Invalid Job-type",
