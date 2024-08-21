@@ -1,4 +1,4 @@
-import { types, locationTypes } from "@/lib/job-types";
+import { types, locationTypes, statusTypes } from "@/lib/job-types";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import Select from "./ui/select";
@@ -7,51 +7,55 @@ import { jobsFilterSchema, JobsFilterValues } from "@/lib/validation";
 import { redirect } from "next/navigation";
 import FormSubmitButton from "./jobsFilterFormSubmitButton";
 
-// Async function to filter jobs based on form data
 async function filterJobs(formData: FormData) {
   "use server";
 
-  // Convert FormData to an object for easier manipulation
   const values = Object.fromEntries(formData.entries());
 
-  // Parse the form values using the validation schema
-  const { query, type, location, remote, hybrid, onSite } =
+  console.log("Raw form values:", values);
+
+  const { query, type, status, location, remote, hybrid, onSite } =
     jobsFilterSchema.parse(values);
 
-  // Construct search parameters from the parsed form values
+  console.log("Parsed form values:", {
+    query,
+    type,
+    status,
+    location,
+    remote,
+    hybrid,
+    onSite,
+  });
+
   const searchParams = new URLSearchParams({
     ...(query && { query: query.trim() }),
     ...(type && { type }),
+    ...(status && { status }),
     ...(location && { location }),
     ...(remote && { remote: "true" }),
     ...(hybrid && { hybrid: "true" }),
     ...(onSite && { onSite: "true" }),
   });
-  // Redirect to the filtered job listing page
   redirect(`/?${searchParams.toString()}`);
 }
 
-// Props interface for the JobsFilterSideBar component
 interface JobsFilterProps {
   defaultValues: JobsFilterValues;
 }
 
-// Main component for rendering the job filter sidebar
 export default async function JobsFilterSideBar({
   defaultValues,
 }: JobsFilterProps) {
-  // Fetch predefined job locations from the database
   const definedLocations = (await prisma.job
     .findMany({
-      where: { approved: true }, // Only fetch approved jobs
-      select: { location: true }, // Select only the location field
-      distinct: ["location"], // Ensure unique locations
+      where: { approved: true },
+      select: { location: true },
+      distinct: ["location"],
     })
-    .then(
-      (locations) => locations.map(({ location }) => location).filter(Boolean), // Map and filter locations
+    .then((locations) =>
+      locations.map(({ location }) => location).filter(Boolean),
     )) as string[];
 
-  // Render the job filter sidebar form
   return (
     <div className="sticky top-0 z-10 m-2 h-fit">
       <aside className="mt-10 border-2 border-custom-primary bg-background p-5 md:w-[300px]">

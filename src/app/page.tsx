@@ -11,6 +11,7 @@ interface PageProps {
   searchParams: {
     query?: string;
     type?: string;
+    status?: string;
     location?: string;
     remote?: string;
     hybrid?: string;
@@ -22,6 +23,7 @@ interface PageProps {
 function dynamicTitle({
   query,
   type,
+  status,
   location,
   remote,
   hybrid,
@@ -30,28 +32,31 @@ function dynamicTitle({
   const prefix = query
     ? `${query} Jobs`
     : type
-      ? `${type} Jobs`
-      : remote
-        ? `${remote} Jobs`
-        : hybrid
-          ? `${hybrid} Jobs`
-          : onSite
-            ? `${onSite} Jobs`
-            : "Mine Applikasjoner";
+      ? `${query} Jobs`
+      : status
+        ? `${type} Jobs`
+        : remote
+          ? `${remote} Jobs`
+          : hybrid
+            ? `${hybrid} Jobs`
+            : onSite
+              ? `${onSite} Jobs`
+              : "Mine Applikasjoner";
 
-  const suffix = location ? ` in ${location}` : "";
+  const suffix = location ? ` i ${location}` : "";
 
   return `${prefix}${suffix}`;
 }
 
 export function generateMetadata({
-  searchParams: { query, type, location, remote, hybrid, onSite },
+  searchParams: { query, status, type, location, remote, hybrid, onSite },
 }: PageProps): Metadata {
   return {
     title: `${dynamicTitle({
       query,
       type,
       location,
+      status,
       remote: remote === "true",
       hybrid: hybrid === "true",
       onSite: onSite === "true",
@@ -60,11 +65,12 @@ export function generateMetadata({
 }
 
 export default async function Home({
-  searchParams: { query, type, location, remote, hybrid, onSite, page },
+  searchParams: { query, type, status, location, remote, hybrid, onSite, page },
 }: PageProps) {
   const filterValues: JobsFilterValues = {
     query,
     type,
+    status,
     location,
     remote: remote === "true",
     hybrid: hybrid === "true",
