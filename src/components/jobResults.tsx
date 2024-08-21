@@ -15,7 +15,8 @@ export default async function JobResults({
   filterValues,
   page = 1,
 }: JobResultsProps) {
-  const { query, type, location, remote, hybrid, onSite } = filterValues;
+  const { query, type, status, location, remote, hybrid, onSite } =
+    filterValues;
 
   const jobsPerPage = 5;
   const skip = (page - 1) * jobsPerPage;
@@ -31,6 +32,7 @@ export default async function JobResults({
           { title: { search: searchString } },
           { companyName: { search: searchString } },
           { type: { search: searchString } },
+          { status: { search: searchString } },
           { locationType: { search: searchString } },
           { location: { search: searchString } },
         ],
@@ -41,6 +43,7 @@ export default async function JobResults({
     AND: [
       searchFilter,
       type ? { type } : {},
+      status ? { status } : {},
       location ? { location } : {},
       remote ? { locationType: "Remote" } : {},
       hybrid ? { locationType: "Hybrid" } : {},
@@ -88,12 +91,13 @@ interface PaginationProps {
 function Pagination({
   currentPage,
   totalPages,
-  filterValues: { query, type, location, remote, hybrid, onSite },
+  filterValues: { query, type, status, location, remote, hybrid, onSite },
 }: PaginationProps) {
   function generatePageLink(page: number) {
     const searchParams = new URLSearchParams({
       ...(query && { query }),
       ...(type && { type }),
+      ...(status && { status }),
       ...(location && { location }),
       ...(remote && { remote: "true" }),
       ...(hybrid && { hybrid: "true" }),

@@ -7,7 +7,6 @@ export function cn(...inputs: ClassValue[]) {
   // Combines input class values using clsx and then merges them with Tailwind CSS classes.
   return twMerge(clsx(inputs));
 }
-// Formats a given amount as Norwegian Krone (NOK) currency.
 export function formatCurrency(amount: number) {
   return new Intl.NumberFormat("nb-NO", {
     style: "currency",
@@ -15,7 +14,6 @@ export function formatCurrency(amount: number) {
   }).format(amount);
 }
 
-// Returns a human-readable string representing the time difference between now and the given date.
 export function relativeDate(from: Date) {
   return formatDistanceToNowStrict(from, { addSuffix: true });
 }
@@ -29,8 +27,3 @@ export function slugify(str: string) {
     .replace(/-+/g, "-");
   return str;
 }
-
-/* return str
-.toLowerCase()
-.replace(/ /g, "-")
-.replace(/[^\w-]+/g, ""); */

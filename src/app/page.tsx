@@ -30,17 +30,17 @@ function dynamicTitle({
   onSite,
 }: JobsFilterValues) {
   const prefix = query
-    ? `${query} Jobs`
+    ? `${query} Jobber`
     : type
-      ? `${query} Jobs`
+      ? `${query} Jobber`
       : status
-        ? `${type} Jobs`
+        ? `${type} Jobber`
         : remote
-          ? `${remote} Jobs`
+          ? `${remote} Jobber`
           : hybrid
-            ? `${hybrid} Jobs`
+            ? `${hybrid} Jobber`
             : onSite
-              ? `${onSite} Jobs`
+              ? `${onSite} Jobber`
               : "Mine Applikasjoner";
 
   const suffix = location ? ` i ${location}` : "";

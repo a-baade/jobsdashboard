@@ -313,7 +313,11 @@ export default function JobDetails({
                           <>{status}</>
                         ) : (
                           <FormControl>
-                            <Select defaultValue={status || ""} {...field}>
+                            <Select
+                              defaultValue={status || ""}
+                              {...field}
+                              className="my-2 flex items-center gap-1.5"
+                            >
                               <option value="" hidden>
                                 Select...
                               </option>
