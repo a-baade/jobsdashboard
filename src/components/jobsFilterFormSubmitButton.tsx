@@ -9,6 +9,6 @@ export default function FormSubmitButton(
   props: React.ButtonHTMLAttributes<HTMLButtonElement>,
 ) {
   const { pending } = useFormStatus();
-  const bgColorClass = pending ? "bg-custom-secondary text-black/80" : "";
+  const bgColorClass = pending ? "bg-custom-primary text-black/80" : "";
   return <LoadingButton {...props} type="submit" loading={pending} />;
 }

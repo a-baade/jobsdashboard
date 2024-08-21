@@ -30,11 +30,11 @@ export default function JobListItem({
   job,
 }: JobListItemProps) {
   return (
-    <div className="flex items-start justify-between">
+    <div className="retro-container flex items-start justify-between">
       <Link key={job.id} href={`/jobs/${job.slug}`} className="block" passHref>
         <article
           key={id}
-          className="group m-2 mt-12 flex gap-3 border-2 border-solid border-custom-primary p-5 hover:bg-custom-primary md:w-[520px]"
+          className="hover:glow group m-2 mt-12 flex gap-3 border-2 border-solid border-custom-primary p-5 md:w-[520px]"
         >
           <Image
             src={companyLogoUrl || companyLogoPlaceholder}
@@ -45,12 +45,10 @@ export default function JobListItem({
           />
           <div className="flex-grow space-y-3">
             <div>
-              <h1 className="text-xl group-hover:text-black/80">{title}</h1>
-              <p className="text-xs text-custom-secondary group-hover:text-black/60">
-                {companyName}
-              </p>
+              <h1 className="text-xl">{title}</h1>
+              <p className="text-xs text-custom-secondary">{companyName}</p>
             </div>
-            <div className="text-muted-foreground group-hover:text-muted/80">
+            <div className="text-muted-foreground">
               <p className="flex items-center gap-1.5 sm:hidden">
                 <Briefcase size={16} className="shrink-0" />
                 {type}
@@ -80,7 +78,7 @@ export default function JobListItem({
 
           <div className="mt-6 hidden shrink-0 flex-col items-start justify-between sm:flex">
             <Badge job={job}>{status}</Badge>
-            <span className="flex items-center gap-1.5 text-muted-foreground group-hover:text-muted/80">
+            <span className="flex items-center gap-1.5 text-muted-foreground">
               <Clock size={16} />
               {relativeDate(createdAt)}
             </span>

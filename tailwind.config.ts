@@ -29,7 +29,7 @@ const config = {
       },
       colors: {
         "custom-primary": "#f8b350",
-        "custom-secondary": "#f8b350",
+        "custom-secondary": "#ff5c00",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

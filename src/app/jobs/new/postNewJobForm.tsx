@@ -41,6 +41,7 @@ export default function PostNewJobForm() {
     Object.entries(values).forEach(([key, value]) => {
       if (value) {
         formData.append(key, value);
+        console.log("Values:", key, value);
       }
     });
 
@@ -234,7 +235,7 @@ export default function PostNewJobForm() {
                 <FormItem>
                   <FormLabel>Lønn</FormLabel>
                   <FormControl>
-                    <Input placeholder="" {...field} />
+                    <Input placeholder="" {...field} type="number" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

@@ -3,6 +3,7 @@ import { locationTypes, types, statusTypes } from "./job-types";
 
 const requiredString = z.string().min(1, "Required");
 const numRequiredString = requiredString.regex(/^\d+$/, "Must be a number");
+
 const companyLogoSchema = z
   .custom<File | undefined>()
   .refine(
@@ -51,9 +52,7 @@ export const createJobsSchema = z
     companyName: requiredString.max(100),
     companyLogo: companyLogoSchema,
     description: requiredString.max(5000).optional(),
-    salary: numRequiredString
-      .max(9, "Number too low for a wage slave")
-      .optional(),
+    salary: numRequiredString.max(9, "Number can't be longer than 9 digits"),
   })
   .and(applicationSchema)
   .and(locationSchema);

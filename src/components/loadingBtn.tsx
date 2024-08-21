@@ -11,7 +11,7 @@ export default function LoadingButton({
   loading,
   ...props
 }: LoadingButtonProps) {
-  const bgColorClass = loading ? "bg-custom-secondary text-black/80" : "";
+  const bgColorClass = loading ? "bg-custom-primary text-black/80" : "";
 
   return (
     <Button
