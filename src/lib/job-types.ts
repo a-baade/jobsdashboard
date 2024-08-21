@@ -7,8 +7,4 @@ export const types = [
   "Volunteer",
 ];
 
-export const locationTypes = [
-  "Hjemmekontor",
-  "Delvis-hjemmekontor",
-  "Tilstedet",
-];
+export const locationTypes = ["On-site", "Remote", "Hybrid"];

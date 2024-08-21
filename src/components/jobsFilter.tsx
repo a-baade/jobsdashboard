@@ -114,7 +114,7 @@ export default async function JobsFilterSideBar({
                 className="scale-125"
                 defaultChecked={defaultValues.remote}
               />
-              <Label htmlFor="remote">Hjemmekontor</Label>
+              <Label htmlFor="remote">Remote</Label>
               <input
                 id="hybrid"
                 name="hybrid"
@@ -122,7 +122,7 @@ export default async function JobsFilterSideBar({
                 className="scale-125"
                 defaultChecked={defaultValues.hybrid}
               />
-              <Label htmlFor="hybrid"> Delvis hjemmekontor</Label>
+              <Label htmlFor="hybrid">Hybrid</Label>
               <input
                 id="onSite"
                 name="onSite"
@@ -130,7 +130,7 @@ export default async function JobsFilterSideBar({
                 className="scale-125"
                 defaultChecked={defaultValues.hybrid}
               />
-              <Label htmlFor="onSite">På stedet</Label>
+              <Label htmlFor="onSite">On-Site</Label>
             </div>
             <FormSubmitButton type="submit" className="w-full">
               Filtrer jobber

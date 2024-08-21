@@ -2,7 +2,7 @@ import { cache } from "react";
 import prisma from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import JobDetails from "@/components/JobDetails";
+import JobDetails from "./JobDetails";
 
 interface PageProps {
   params: { slug: string };

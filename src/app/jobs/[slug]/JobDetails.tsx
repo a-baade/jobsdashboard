@@ -4,7 +4,7 @@ import { Briefcase, Globe2, MapPin, Pencil } from "lucide-react";
 import { types, locationTypes } from "@/lib/job-types";
 import Image from "next/image";
 import Link from "next/link";
-import Markdown from "./Markdown";
+import Markdown from "../../../components/Markdown";
 import { ChangeEvent, useEffect, useState } from "react";
 import {
   Form,
@@ -14,15 +14,15 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import Select from "./ui/select";
-import TextEditor from "./textEditor";
+import Select from "../../../components/ui/select";
+import TextEditor from "../../../components/textEditor";
 import { draftToMarkdown } from "markdown-draft-js";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import LoadingButton from "./loadingBtn";
+import LoadingButton from "../../../components/loadingBtn";
 import { updateJobsSchema, UpdateJobsValues } from "@/lib/validation";
 import { updateJobPost } from "@/app/jobs/[slug]/actions";
-import Navbar from "./Navbar";
+import Navbar from "../../../components/Navbar";
 
 interface JobDetailsProps {
   job: Job;
@@ -203,7 +203,7 @@ export default function JobDetails({
                           type
                         ) : (
                           <FormControl>
-                            <Select defaultValue={""} {...field}>
+                            <Select defaultValue={type} {...field}>
                               <option value="" hidden>
                                 Select...
                               </option>
@@ -230,7 +230,7 @@ export default function JobDetails({
                           locationType
                         ) : (
                           <FormControl>
-                            <Select defaultValue={""} {...field}>
+                            <Select defaultValue={locationType} {...field}>
                               <option value="" hidden>
                                 Select...
                               </option>

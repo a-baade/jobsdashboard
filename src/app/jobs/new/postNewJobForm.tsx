@@ -161,9 +161,7 @@ export default function PostNewJobForm() {
               name="locationType"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
-                    Hjemmekontor, Delvis hjemmekontor, Tilstedet
-                  </FormLabel>
+                  <FormLabel>Remote || Hybrid || On-site</FormLabel>
                   <FormControl>
                     <Select
                       defaultValue={""}
