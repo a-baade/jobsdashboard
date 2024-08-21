@@ -1,0 +1,19 @@
+import ReactMarkdown from "react-markdown";
+
+interface MarkdownProps {
+  children: string;
+}
+
+export default function Markdown({ children }: MarkdownProps) {
+  return (
+    <ReactMarkdown
+      className="m-8 space-y-3"
+      components={{
+        ul: (props) => <ul className="list-inside list-disc" {...props} />,
+        a: (props) => <a className="" target="_blank" {...props} />,
+      }}
+    >
+      {children}
+    </ReactMarkdown>
+  );
+}
