@@ -7,8 +7,15 @@ import { redirect } from "next/navigation";
 export async function updateJobPost(formData: FormData) {
   const values = Object.fromEntries(formData.entries());
 
-  const { title, companyName, type, locationType, location, description } =
-    updateJobsSchema.parse(values);
+  const {
+    title,
+    companyName,
+    type,
+    status,
+    locationType,
+    location,
+    description,
+  } = updateJobsSchema.parse(values);
 
   try {
     const values = Object.fromEntries(formData.entries());
@@ -32,6 +39,7 @@ export async function updateJobPost(formData: FormData) {
         title: validatedData.title,
         companyName: validatedData.companyName,
         type: validatedData.type,
+        status: validatedData.status,
         locationType: validatedData.locationType,
         location: validatedData.location,
         description: validatedData.description,

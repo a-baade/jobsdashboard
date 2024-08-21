@@ -1,11 +1,19 @@
 "use client";
 import { Job } from "@prisma/client";
-import { Briefcase, Globe2, MapPin, Pencil } from "lucide-react";
-import { types, locationTypes } from "@/lib/job-types";
+import {
+  Ban,
+  Briefcase,
+  CircleCheckBig,
+  Globe2,
+  Info,
+  MapPin,
+  Pencil,
+} from "lucide-react";
+import { types, locationTypes, statusTypes } from "@/lib/job-types";
 import Image from "next/image";
 import Link from "next/link";
 import Markdown from "../../../components/Markdown";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Form,
   FormControl,
@@ -23,7 +31,6 @@ import LoadingButton from "../../../components/loadingBtn";
 import { updateJobsSchema, UpdateJobsValues } from "@/lib/validation";
 import { updateJobPost } from "@/app/jobs/[slug]/actions";
 import Navbar from "../../../components/Navbar";
-
 interface JobDetailsProps {
   job: Job;
   jobId: Job;
@@ -39,6 +46,7 @@ export default function JobDetails({
     applicationEmail,
     applicationUrl,
     type,
+    status,
     location,
     locationType,
   },
@@ -93,6 +101,14 @@ export default function JobDetails({
     setEditable((prevMode) => (prevMode === "view" ? "edit" : "view"));
     setIsLinkActive(!isLinkActive);
   };
+
+  let statusClass = "my-2 flex items-center gap-1.5";
+
+  if (status === statusTypes[0]) {
+    statusClass += " text-lime-500";
+  } else if (status === statusTypes[1]) {
+    statusClass += " text-rose-600";
+  }
 
   return (
     <section className="retro-container m-auto bg-primary-dark">
@@ -284,8 +300,39 @@ export default function JobDetails({
                   )}
                 />
               </div>
+              <div>
+                <div className={statusClass}>
+                  {status === statusTypes[0] && <CircleCheckBig size={16} />}
+                  {status === statusTypes[1] && <Ban size={16} />}{" "}
+                  <FormField
+                    control={control}
+                    name="status"
+                    render={({ field }) => (
+                      <FormItem>
+                        {mode === "view" ? (
+                          <>{status}</>
+                        ) : (
+                          <FormControl>
+                            <Select defaultValue={status || ""} {...field}>
+                              <option value="" hidden>
+                                Select...
+                              </option>
+                              {statusTypes.map((statusType) => (
+                                <option key={statusType} value={statusType}>
+                                  {statusType}
+                                </option>
+                              ))}
+                            </Select>
+                          </FormControl>
+                        )}
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              </div>
             </div>
           </div>
+
           <div className="text-custom-secondary">
             <FormField
               control={control}

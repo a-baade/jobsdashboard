@@ -74,6 +74,7 @@ export type JobsFilterValues = z.infer<typeof jobsFilterSchema>;
 export const updateJobsSchema = z.object({
   jobId: numRequiredString.max(9).optional(),
   title: z.string().max(100).optional(),
+  status: z.string().max(100).optional(),
   companyName: z.string().max(100).optional(),
   type: z
     .string()
