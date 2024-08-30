@@ -52,7 +52,9 @@ export const createJobsSchema = z
     companyName: requiredString.max(100),
     companyLogo: companyLogoSchema,
     description: requiredString.max(5000).optional(),
-    salary: numRequiredString.max(9, "Number can't be longer than 9 digits"),
+    salary: numRequiredString
+      .max(9, "Number can't be longer than 9 digits")
+      .optional(),
   })
   .and(applicationSchema)
   .and(locationSchema);

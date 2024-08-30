@@ -61,10 +61,12 @@ export default function JobListItem({
                 <Globe2 size={16} className="shrink-0" />
                 {location || "N/A"}
               </p>
-              <p className="flex items-center gap-1.5">
-                <Banknote size={16} className="shrink-0" />
-                {formatCurrency(salary ?? 0)}
-              </p>
+              {salary !== null && salary > 0 && (
+                <p className="flex items-center gap-1.5">
+                  <Banknote size={16} className="shrink-0" />
+                  {formatCurrency(salary ?? 0)}
+                </p>
+              )}
               <p className="flex items-center gap-1.5">
                 <Briefcase size={16} className="shrink-0" />
                 {type}
@@ -85,7 +87,7 @@ export default function JobListItem({
           </div>
         </article>
       </Link>
-      <div className="m-12 ml-auto mt-5 flex-col items-end text-xl group-hover:text-black/80">
+      <div className="m-12 ml-auto mt-5 h-[20px] w-[20px] flex-col items-end text-xl group-hover:text-black/80">
         <DeleteJobButton jobId={job.id} />
       </div>
     </div>

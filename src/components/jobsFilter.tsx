@@ -1,5 +1,5 @@
-import { types, locationTypes, statusTypes } from "@/lib/job-types";
-import { Input } from "./ui/input";
+import { types } from "@/lib/job-types";
+import { FilterInput } from "./ui/filterInput";
 import { Label } from "./ui/label";
 import Select from "./ui/select";
 import prisma from "@/lib/prisma";
@@ -63,7 +63,7 @@ export default async function JobsFilterSideBar({
           <div className="space-y-4">
             <div className="flex flex-col gap-2">
               <Label htmlFor="query">Søk</Label>
-              <Input
+              <FilterInput
                 id="query"
                 name="query"
                 placeholder="Stilling, bedrift, ansettelses ..."

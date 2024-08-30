@@ -3,12 +3,12 @@ import { Button } from "./ui/button";
 
 interface LoadingButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  loading: boolean;
+  loading?: boolean;
 }
 
 export default function LoadingButton({
   children,
-  loading,
+  loading = false,
   ...props
 }: LoadingButtonProps) {
   const bgColorClass = loading ? "bg-custom-primary text-black/80" : "";
@@ -21,7 +21,7 @@ export default function LoadingButton({
     >
       <span className="flex items-center justify-center gap-1">
         {loading && <Loader size={16} className="motion-safe:animate-spin" />}
-        {children}
+        {!loading && children}
       </span>
     </Button>
   );

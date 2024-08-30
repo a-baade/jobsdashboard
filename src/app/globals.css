@@ -64,7 +64,7 @@
 
   color: theme("colors.custom-primary");
   mask-image: linear-gradient(to bottom, #0005 10%, #000 26%);
-  mask-size: 100% 2px;
+  mask-size: 100% 2.1px;
   text-shadow: 0 0 0.5rem;
   z-index: 10;
 }

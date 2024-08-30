@@ -5,27 +5,100 @@ const placeholderJobs = [
     companyName: "Tech Innovations Inc.",
     locationType: "Remote",
     location: "Global",
+    status: "Sendt",
     applicationEmail: "jobs@techinnovations.com",
     applicationUrl: "https://www.techinnovations.com/careers",
     slug: "software-engineer-full-time-tech-innovations-inc",
     salary: 100000, // Assuming a base salary of $100,000
     approved: true,
     description:
-      "We are looking for a Software Engineer to join our team. This role involves developing new features and improving existing ones.",
+      `
+**Tech Innovations Inc.**
+
+technology company that builds innovation for the internet.
+
+**Job Description**
+
+  Software Engineer
+**Key Responsibilities**
+
+- Design, develop, test, deploy, maintain, and improve software across the stack.
+- Work closely with other engineering teams to integrate and develop new features.
+- Contribute to the full software development lifecycle, including requirements analysis, architecture, design, coding, testing, and deployment.
+- Optimize applications for maximum speed and scalability.
+- Participate in code reviews and mentor junior developers.
+
+**Qualifications**
+
+- Bachelor's degree in Computer Science, Engineering, or a related field, or equivalent practical experience.
+- 3+ years of experience in full-stack development.
+- Proficiency in one or more general-purpose programming languages including but not limited to: Ruby, Java, JavaScript, Python.
+- Experience with front-end technologies such as React, Angular, or Vue.js.
+- Familiarity with server-side frameworks like Ruby on Rails, Django, or Node.js.
+- Knowledge of database technologies such as MySQL, PostgreSQL, and MongoDB.
+- Strong understanding of web technologies and architectures.
+- Excellent problem-solving skills and attention to detail.
+
+**Benefits**
+
+- Competitive salary and equity package.
+- Health, dental, and vision insurance.
+- Generous vacation and parental leave policies.
+- 401(k) plan with employer match.
+- Flexible work arrangements.
+- Continuous learning and development opportunities.
+`,
+      
   },
   {
     title: "Data Analyst",
     type: "Part-time",
-    companyName: "Analytics Solutions LLC",
+    companyName: "Placeholder Solutions LLC",
     locationType: "Hybrid",
     location: "New York, NY",
+    status: "Sendt",
     applicationEmail: "analytics@anlyticsolutions.com",
     applicationUrl: "https://www.anlyticsolutions.com/jobs",
     slug: "data-analyst-part-time-analytics-solutions-llc",
     salary: 80000, // Assuming a base salary of $80,000
     approved: true,
     description:
-      "Join our Analytics Solutions team as a Data Analyst. You will be responsible for analyzing and interpreting complex digital data.",
+    `
+    **Placeholder Solutions LLC**
+    
+    placeholder company that builds placehholder data for the internet.
+    
+    **Job Description**
+    
+      Data Analyst
+    **Key Responsibilities**
+    
+    - Design, develop, test, deploy, maintain, and improve software across the stack.
+    - Work closely with other engineering teams to integrate and develop new features.
+    - Contribute to the full software development lifecycle, including requirements analysis, architecture, design, coding, testing, and deployment.
+    - Optimize applications for maximum speed and scalability.
+    - Participate in code reviews and mentor junior developers.
+    
+    **Qualifications**
+    
+    - Bachelor's degree in Computer Science, Engineering, or a related field, or equivalent practical experience.
+    - 3+ years of experience in full-stack development.
+    - Proficiency in one or more general-purpose programming languages including but not limited to: Ruby, Java, JavaScript, Python.
+    - Experience with front-end technologies such as React, Angular, or Vue.js.
+    - Familiarity with server-side frameworks like Ruby on Rails, Django, or Node.js.
+    - Knowledge of database technologies such as MySQL, PostgreSQL, and MongoDB.
+    - Strong understanding of web technologies and architectures.
+    - Excellent problem-solving skills and attention to detail.
+    
+    **Benefits**
+    
+    - Competitive salary and equity package.
+    - Health, dental, and vision insurance.
+    - Generous vacation and parental leave policies.
+    - 401(k) plan with employer match.
+    - Flexible work arrangements.
+    - Continuous learning and development opportunities.
+    `,
   },
   {
     title: "Product Manager",
@@ -33,6 +106,7 @@ const placeholderJobs = [
     companyName: "Digital Products Corp.",
     locationType: "On-site",
     location: "San Francisco, CA",
+    status: "Sendt",
     applicationEmail: "pm@digitalproducts.com",
     applicationUrl: "https://www.digitalproducts.com/careers",
     slug: "product-manager-contractual-digital-products-corp",
@@ -47,7 +121,7 @@ const placeholderJobs = [
     companyName: "Design Studio XYZ",
     locationType: "Remote",
     location: "Anywhere",
-    status: "Sendt",
+    status: "Avist",
     applicationEmail: "designs@designstudioxyz.com",
     applicationUrl: "https://www.designstudioxyz.com/freelance",
     slug: "ux-designer-freelance-design-studio-xyz",
@@ -96,6 +170,7 @@ UX-designer
     companyName: "Marketing Hub Ltd.",
     locationType: "On-site",
     location: "London, UK",
+    status: "Avist",
     applicationEmail: "marketing@markethubltd.com",
     applicationUrl: "https://www.markethubltd.com/careers",
     slug: "marketing-specialist-internship-marketing-hub-ltd",
@@ -110,6 +185,7 @@ UX-designer
     companyName: "CodeCrafters Co.",
     locationType: "On-site",
     location: "Seattle, WA",
+    status: "Sendt",
     applicationEmail: "backend@codecrafters.co",
     applicationUrl: "https://www.codecrafters.co/jobs",
     slug: "backend-developer-permanent-codecrafters-co",

@@ -40,6 +40,8 @@ export async function createJobPost(formData: FormData) {
     companyLogoUrl = blob.url;
   }
 
+  const safeSalary = salary ?? "0";
+
   await prisma.job.create({
     data: {
       slug,
@@ -52,7 +54,7 @@ export async function createJobPost(formData: FormData) {
       location,
       applicationEmail: applicationEmail?.trim(),
       applicationUrl: applicationUrl?.trim(),
-      salary: parseInt(salary),
+      salary: parseInt(safeSalary),
       description: description?.trim(),
 
       approved: true,
