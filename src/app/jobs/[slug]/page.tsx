@@ -41,8 +41,9 @@ export async function generateMetadata({
 
 export default async function Page({ params: { slug } }: PageProps) {
   const job = await getJob(slug);
-  const session = await getSession();
+  const session = await auth();
   const user = session?.user;
+
   /* 
   if (!user || !user.id) {
     redirect("/api/auth/signin?callbackUrl=/");
