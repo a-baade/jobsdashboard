@@ -43,7 +43,7 @@ export default async function Page({ params: { slug } }: PageProps) {
   const job = await getJob(slug);
   const session = await getSession();
   const user = session?.user;
-
+  /* 
   if (!user || !user.id) {
     redirect("/api/auth/signin?callbackUrl=/");
   }
@@ -51,7 +51,7 @@ export default async function Page({ params: { slug } }: PageProps) {
   // Check if the user owns the job
   if (job.userId !== user.id) {
     redirect("/404");
-  }
+  } */
   return (
     <main>
       <JobDetails job={job} jobId={job} />
