@@ -9,7 +9,7 @@ import { Metadata } from "next";
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import { auth } from "@/lib/auth";
-import { User } from "next-auth";
+import getSession from "@/lib/getSession";
 
 interface PageProps {
   searchParams: {
@@ -80,7 +80,7 @@ export default async function Home({
     hybrid: hybrid === "true",
     onSite: onSite === "true",
   };
-  const session = await auth();
+  const session = await getSession();
   const user = session?.user;
 
   if (!user) {
