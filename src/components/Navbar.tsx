@@ -5,6 +5,7 @@ import UserButton from "./UserButton";
 export default async function NavBar() {
   const session = await auth();
   const user = session?.user;
+
   return (
     <header className="sticky top-0 bg-background px-2">
       <nav className="mx-auto flex max-w-7xl flex-grow justify-end">

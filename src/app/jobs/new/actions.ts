@@ -7,8 +7,14 @@ import { put } from "@vercel/blob";
 import path from "path";
 import prisma from "@/lib/prisma";
 import { redirect } from "next/navigation";
+import { auth } from "@/lib/auth";
 
 export async function createJobPost(formData: FormData) {
+  const session = await auth();
+  const userId = session?.user?.id;
+  if (!userId) {
+    throw Error("Unauthorized");
+  }
   const values = Object.fromEntries(formData.entries());
 
   const {
@@ -56,8 +62,8 @@ export async function createJobPost(formData: FormData) {
       applicationUrl: applicationUrl?.trim(),
       salary: parseInt(safeSalary),
       description: description?.trim(),
-
       approved: true,
+      userId: userId as string,
     },
   });
 
