@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { cache } from "react";
 import prisma from "@/lib/prisma";
 import { notFound, redirect } from "next/navigation";
@@ -11,13 +12,16 @@ interface PageProps {
 }
 
 const getJob = cache(async (slug: string) => {
-  const job = await prisma.job.findUnique({
-    where: { slug },
-  });
-
-  if (!job) notFound();
-
-  return job;
+  try {
+    const job = await prisma.job.findUnique({
+      where: { slug },
+    });
+    if (!job) notFound();
+    return job;
+  } catch (error) {
+    console.error("Error fetching job:", error);
+    throw new Error("Failed to fetch job");
+  }
 });
 
 export async function generateStaticParams() {
@@ -44,7 +48,6 @@ export default async function Page({ params: { slug } }: PageProps) {
   const session = await auth();
   const user = session?.user;
 
-  /* 
   if (!user || !user.id) {
     redirect("/api/auth/signin?callbackUrl=/");
   }
@@ -52,7 +55,7 @@ export default async function Page({ params: { slug } }: PageProps) {
   // Check if the user owns the job
   if (job.userId !== user.id) {
     redirect("/404");
-  } */
+  }
   return (
     <main>
       <JobDetails job={job} jobId={job} />
