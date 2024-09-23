@@ -6,6 +6,7 @@ import prisma from "@/lib/prisma";
 import { jobsFilterSchema, JobsFilterValues } from "@/lib/validation";
 import { redirect } from "next/navigation";
 import FormSubmitButton from "./jobsFilterFormSubmitButton";
+import { auth } from "@/lib/auth";
 
 async function filterJobs(formData: FormData) {
   "use server";
@@ -46,6 +47,12 @@ interface JobsFilterProps {
 export default async function JobsFilterSideBar({
   defaultValues,
 }: JobsFilterProps) {
+  const session = await auth();
+  const user = session?.user;
+
+  if (!user) {
+    return null;
+  }
   const definedLocations = (await prisma.job
     .findMany({
       where: { approved: true },

@@ -30,7 +30,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import LoadingButton from "../../../components/loadingBtn";
 import { updateJobsSchema, UpdateJobsValues } from "@/lib/validation";
 import { updateJobPost } from "@/app/jobs/[slug]/actions";
-import Navbar from "../../../components/Navbar";
+import BackButton from "../../../components/BackButton";
 interface JobDetailsProps {
   job: Job;
   jobId: Job;
@@ -112,7 +112,7 @@ export default function JobDetails({
 
   return (
     <section className="retro-container m-auto bg-primary-dark">
-      <Navbar />
+      <BackButton />
 
       <div className="mb-4 flex items-center"></div>
       <Form {...form}>

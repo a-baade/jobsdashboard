@@ -18,7 +18,7 @@ import { draftToMarkdown } from "markdown-draft-js";
 import { Label } from "@/components/ui/label";
 import LoadingButton from "@/components/loadingBtn";
 import { createJobPost } from "./actions";
-import Navbar from "@/components/Navbar";
+import BackButton from "../../../components/BackButton";
 
 export default function PostNewJobForm() {
   const form = useForm<CreateJobsValues>({
@@ -54,7 +54,7 @@ export default function PostNewJobForm() {
 
   return (
     <main className="retro-container m-auto my-10 max-w-5xl space-y-10 bg-primary-dark">
-      <Navbar />
+      <BackButton />
 
       <div className="space-y-5 text-center">
         <h1 className="text-md text-4xl font-extrabold tracking-tight text-custom-primary lg:text-5xl">

@@ -7,12 +7,13 @@ import Badge from "./ui/badge";
 import { DeleteJobButton } from "./DeleteJobButton";
 import Link from "next/link";
 import { statusTypes } from "@/lib/job-types";
+import { auth } from "@/lib/auth";
 
 interface JobListItemProps {
   job: Job;
 }
 
-export default function JobListItem({
+export default async function JobListItem({
   job: {
     id,
     slug,

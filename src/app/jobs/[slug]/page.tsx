@@ -1,8 +1,9 @@
 import { cache } from "react";
 import prisma from "@/lib/prisma";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Metadata } from "next";
 import JobDetails from "./JobDetails";
+import { auth } from "@/lib/auth";
 
 interface PageProps {
   params: { slug: string };
@@ -39,7 +40,12 @@ export async function generateMetadata({
 
 export default async function Page({ params: { slug } }: PageProps) {
   const job = await getJob(slug);
+  const session = await auth();
+  const user = session?.user;
 
+  if (!user) {
+    redirect("/api/auth/signin?callbackUrl=/");
+  }
   return (
     <main>
       <JobDetails job={job} jobId={job} />

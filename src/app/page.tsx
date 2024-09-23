@@ -4,8 +4,12 @@ import { JobsFilterValues } from "@/lib/validation";
 import JobResults from "@/components/jobResults";
 import Link from "next/link";
 import PostNewJobSideBar from "@/components/postNewJob";
+import NotLoggedIn from "@/components/notLoggedIn";
 import { Metadata } from "next";
 import { useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import { auth } from "@/lib/auth";
+import { User } from "next-auth";
 
 interface PageProps {
   searchParams: {
@@ -41,7 +45,7 @@ function dynamicTitle({
             ? `${hybrid} Jobber`
             : onSite
               ? `${onSite} Jobber`
-              : "Mine Applikasjoner";
+              : `Mine Applikasjoner`;
 
   const suffix = location ? ` i ${location}` : "";
 
@@ -76,9 +80,16 @@ export default async function Home({
     hybrid: hybrid === "true",
     onSite: onSite === "true",
   };
+  const session = await auth();
+  const user = session?.user;
+
+  if (!user) {
+    return <NotLoggedIn />;
+  }
   return (
     <>
       <main className="retro-container m-auto my-10 max-w-6xl space-y-10 bg-primary-dark px-3">
+        <Navbar />
         <div className="space-y-5 text-center">
           <h1 className="text-md text-4xl font-extrabold tracking-tight text-custom-primary lg:text-5xl">
             <Link href="/">{dynamicTitle(filterValues)}</Link>

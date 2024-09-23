@@ -1,21 +1,42 @@
-import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import { auth, signIn } from "@/lib/auth";
+import { Button } from "./ui/button";
+import UserButton from "./UserButton";
 
-export default function Navbar() {
-  const handleBack = () => {
-    window.history.back();
-  };
-
+export default async function NavBar() {
+  const session = await auth();
+  const user = session?.user;
   return (
-    <header className="shadow-sm">
-      <nav className="m-auto flex items-start justify-between px-3 py-5">
-        <button onClick={handleBack} className="flex items-start gap-3">
-          <div className="flex items-center gap-2 text-xl font-bold tracking-tight">
-            <ArrowLeft size={16} />
-            {"Tilbake"}
+    <header className="sticky top-0 bg-background px-2">
+      <nav className="mx-auto flex max-w-7xl flex-grow justify-end">
+        {!user && (
+          <div className="flex h-12 w-24 flex-grow justify-end">
+            <SignInButton />
           </div>
-        </button>
+        )}
+        {user && (
+          <div className="flex-shrink-0">
+            <UserButton user={user} />
+          </div>
+        )}
       </nav>
     </header>
+  );
+}
+
+function SignInButton() {
+  return (
+    <form
+      action={async () => {
+        "use server";
+        await signIn();
+      }}
+    >
+      <Button
+        className="retro-container h-10 w-40 border-2 border-custom-primary text-lg font-semibold"
+        type="submit"
+      >
+        SIGN IN
+      </Button>
+    </form>
   );
 }
