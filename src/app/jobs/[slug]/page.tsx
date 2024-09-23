@@ -43,8 +43,13 @@ export default async function Page({ params: { slug } }: PageProps) {
   const session = await auth();
   const user = session?.user;
 
-  if (!user) {
+  if (!user || !user.id) {
     redirect("/api/auth/signin?callbackUrl=/");
+  }
+
+  // Check if the user owns the job
+  if (job.userId !== user.id) {
+    redirect("/404");
   }
   return (
     <main>
