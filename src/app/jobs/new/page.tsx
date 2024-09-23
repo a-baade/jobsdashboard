@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: "Legg til ny applikasjon",
 };
 export default async function Page() {
-  const session = await auth();
+  /*   const session = await auth();
   const user = session?.user;
 
   if (!user) {
     redirect("/api/auth/signin?callbackUrl=/jobs/new");
-  }
+  } */
   return <PostNewJobForm />;
 }
