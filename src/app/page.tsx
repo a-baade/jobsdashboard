@@ -83,8 +83,6 @@ export default async function Home({
   const session = await auth();
   const user = session?.user;
 
-  console.log("User", user);
-
   if (!user) {
     return <NotLoggedIn />;
   }

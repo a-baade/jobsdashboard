@@ -15,6 +15,7 @@ export async function createJobPost(formData: FormData) {
   if (!userId) {
     throw Error("Unauthorized");
   }
+
   const values = Object.fromEntries(formData.entries());
 
   const {

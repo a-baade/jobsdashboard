@@ -5,6 +5,7 @@ import { Prisma } from "@prisma/client";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { auth } from "@/lib/auth";
 
 interface JobResultsProps {
   filterValues: JobsFilterValues;
@@ -15,6 +16,8 @@ export default async function JobResults({
   filterValues,
   page = 1,
 }: JobResultsProps) {
+  const session = await auth();
+  const userId = session?.user?.id;
   const { query, type, status, location, remote, hybrid, onSite } =
     filterValues;
 
@@ -49,6 +52,7 @@ export default async function JobResults({
       hybrid ? { locationType: "Hybrid" } : {},
       onSite ? { locationType: "On-site" } : {},
       { approved: true },
+      { userId: userId },
     ],
   };
 
