@@ -40,7 +40,7 @@ export default async function JobListItem({
             alt={`${companyName} logo`}
             width={100}
             height={100}
-            className="self-center"
+            className="self-center bg-white"
           />
           <div className="flex-grow space-y-3">
             <div>
